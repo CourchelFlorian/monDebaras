@@ -2,9 +2,9 @@
 
 <div class="corps">
 <form enctype="multipart/form-data" action="index.php?useCase=ajoutObjet&action=valideFormulaire" method="post">
-    <fieldset>
-        <legend>Ajouter un objet</legend>
-        <table style="text-align: left;">
+    <fieldset> <!-- Groupe différente partie d'un formulaire -->
+        <legend>Ajouter un objet</legend> <!-- Définit la légende du groupe -->
+        <table style="text-align: left;"> <!-- Création d'un tableau -->
             <tr>
                 <th> Intitule :</th>
                 <th><input type="text" name="intitule" /></th>
@@ -12,14 +12,14 @@
             <tr>
                 <th> Categorie :</th>
                 <th>
-                   <select name="categorie" >
+                   <select name="categorie" > <!-- Créaion d'un menu déroulant -->
                        <option value="...">...</option>
                    </select> <!-- Fonction Charger_categorie à revoir pour affichage auto-->
                 </th>
             </tr>
             <tr>
                 <th>Description :</th>
-                <th><textarea> </textarea></th>
+                <th><textarea> </textarea> <!-- Zone de texte style textBox --></th>
             </tr>
             <tr>
                 <th>Prix :</th>
@@ -31,6 +31,6 @@
             </tr>
         </table>
           <input type="button" value="Ajouter"/>
-    </fieldset>
+    </fieldset> <!-- Fin du Groupe -->
 </form>
 </div>

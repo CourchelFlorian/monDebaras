@@ -1,3 +1,3 @@
-<footer>
+<footer> <!-- Pied de page -->
     Copyright...
 </footer>
