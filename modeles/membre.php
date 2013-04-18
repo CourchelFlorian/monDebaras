@@ -49,7 +49,7 @@ function lireInfosMembre($id)
         {
                 $requete->execute();
                 $ligne= $requete->fetch();
-                return $ligne['id,login,mdp,droit,mail'];
+                return $ligne['id,login,mdp,droit,mail']; // Je suis pas sûr de cette ligne
         }
         catch (Exception $e){
                     echo 'erreur. Impossible de récupérer les infos'.$e;
@@ -57,96 +57,82 @@ function lireInfosMembre($id)
         }   
 }
 	
-function ajouterMembre($intitule) // Ajouter memebre
+function ajouterMembre($intitule) // Ajouter membre
  {
 
 	$pdo = PDO2::getInstance();
 
-	$requete = $pdo->prepare("INSERT INTO profil Values(
-                                                            null,
-                                                            :intitule
+	$requete = $pdo->prepare("INSERT INTO membre Values( :id
+                                                             :login
+                                                             :mdp
+                                                             :droit
+                                                             :mail                                                           
                                     )");
-	$requete->bindValue(':intitule', $intitule);
+        
+	$requete->bindValue(':id', $id); 
+        $requete->bindValue(':login', $login);
+        $requete->bindValue(':mdp', $mdp);
+        $requete->bindValue(':droit', $droit);
+        $requete->bindValue(':mail', $mail);
 	
 	
-        try{
+        try
+        {
                 $requete->execute() ;
                 $dernierId = $pdo->lastInsertId();
                 return $dernierId;
         }
         catch (Exception $e){
-                    echo 'erreur. Impossible d\'ajouter l\'intitulé'.$e;
+                    echo 'erreur. Impossible d\'ajouter le membre'.$e;
                     return false;
         }   
 }
 
 
 
-function modifier_profil_dans_bdd($intitule,$id) // Modifier droit
+function modifierDroit($id) // Modifier droit
  {
 
 	$pdo = PDO2::getInstance();
 
-	$requete = $pdo->prepare("UPDATE profil SET
-                                    		intitule=:intitule
-                                		where idProfil=:id");
-
-	$requete->bindValue(':intitule', $intitule);
+	$requete = $pdo->prepare("UPDATE membre SET 
+                                                droit
+                                                where idProfil=:id");
 	
         $requete->bindValue(':id', $id);
 
-	try{
+	try
+        {
                 $requete->execute();
                
         }
         catch (Exception $e){
-                    echo 'erreur. Impossible de modifier l\'intitulé'.$e;
+                    echo 'erreur. Impossible de modifier le droit'.$e;
                    
         }   
 }
 
-function supprimer_profil_dans_bdd($id) // Supprimer membre
+function supprimerMembre($id) // Supprimer membre
 {
 
 	$pdo = PDO2::getInstance();
 
-	$requete = $pdo->prepare("DELETE FROM profil 
+	$requete = $pdo->prepare("DELETE FROM membre 
                                   where id=:id");
 
 	
         $requete->bindValue(':id', $id);
 
-	try{
+	try
+        {
                 $requete->execute();
                 
         }
-        catch (Exception $e){
-                    echo 'erreur. Impossible de supprimer l\'intitulé'.$e;
+        
+        catch (Exception $e)
+        {
+                    echo 'erreur. Impossible de supprimer le membre'.$e;
                     
         }   
-}
-
-
-
-function chargerprofil() {
-
-	$pdo = PDO2::getInstance();
-
-	$requete = $pdo->prepare("SELECT id,intitule FROM profil");
-	
-	$requete->execute();
-        
-        
-        try{
-                $requete->execute();
-                $tab = $requete->fetchAll();
-		$requete->closeCursor();
-                return $tab;
-        }
-        catch (Exception $e){
-                    echo 'erreur. Impossible de récupérer les profils'.$e;
-                    return false;
-        }   
-	
 }
 }
