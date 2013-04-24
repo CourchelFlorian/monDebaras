@@ -1,6 +1,7 @@
 <?php
 
-class categorie {
+class categorie 
+{
 	private $id;
 	private $libelle;
 	
@@ -61,12 +62,12 @@ class categorie {
                     echo 'erreur. Impossible d\'ajouter l\'intitulé'.$e;
                     return false;
         }   
-}
+    }
 
 
 
-function modifierCategorie($libelle,$id)
-{
+    function modifierCategorie($libelle,$id)
+    {
 
 	$pdo = PDO2::getInstance();
 
@@ -88,6 +89,6 @@ function modifierCategorie($libelle,$id)
                     echo 'erreur. Impossible de modifier le libelle'.$e;
                    
         }   
-}
+    }
 }
 

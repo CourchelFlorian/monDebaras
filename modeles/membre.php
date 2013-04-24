@@ -57,7 +57,8 @@ function lireInfosMembre($id)
         }   
 }
 	
-function ajouterMembre($intitule) // Ajouter membre
+function ajouterMembre($id) // Ajouter membre yo alex comme tu vois tu as des erreurs ligne 73, 74 etc.. je pense que c'est parce que tu as passé que l'id en parametre 
+//alors que pour ajouter un membre il faut lui donner un id certe mais aussi renseigner son mail son mdp et toussa bisou
  {
 
 	$pdo = PDO2::getInstance();
