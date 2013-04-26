@@ -5,17 +5,17 @@ class categorie
 	private $id;
 	private $libelle;
 	
-    function getId () 
+    function getId () //fonction recuperant l'id de la categorie
     {
             return $this->id;
     }
 
-    function getLibelle() 
+    function getLibelle() //fonction de recuperant le libelle
     {
             return $this->libelle;
     }
     
-    function lireInfosCategorie($id) 
+    function lireInfosCategorie($id) //fonction retournant le libelle de la categorie liée a l'id fourni en parametre
     {
 
 	$pdo = PDO2::getInstance();
@@ -40,7 +40,7 @@ class categorie
         }   
     }
     
-    function ajouterCategorie($intitule) 
+    function ajouterCategorie($intitule) //fonction permettant d'ajouter une categorie
     {
 
 	$pdo = PDO2::getInstance();
@@ -59,14 +59,13 @@ class categorie
         }
         catch (Exception $e)
         {
-                    echo 'erreur. Impossible d\'ajouter l\'intitulé'.$e;
-                    return false;
+                echo 'erreur. Impossible d\'ajouter l\'intitulé'.$e;
+                return false;
         }   
     }
 
 
-
-    function modifierCategorie($libelle,$id)
+    function modifierCategorie($libelle,$id)//fonction modifiant le libelle de la categorie désignée
     {
 
 	$pdo = PDO2::getInstance();

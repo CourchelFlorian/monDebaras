@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10.1
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Ven 12 Avril 2013 à 11:47
--- Version du serveur: 5.5.20
--- Version de PHP: 5.3.10
+-- Généré le: Ven 26 Avril 2013 à 09:34
+-- Version du serveur: 5.5.24-log
+-- Version de PHP: 5.4.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -48,6 +48,14 @@ CREATE TABLE IF NOT EXISTS `membre` (
   KEY `droit` (`droit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `membre`
+--
+
+INSERT INTO `membre` (`id`, `login`, `mdp`, `droit`, `mail`) VALUES
+(1, 'Florian', 'guy', 1, 'test@gmail.com'),
+(2, 'debarrasseur', 'guy', 2, 'test@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -77,6 +85,14 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `libelle` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `profil`
+--
+
+INSERT INTO `profil` (`id`, `libelle`) VALUES
+(1, 'admin'),
+(2, 'débarasseur');
 
 -- --------------------------------------------------------
 
@@ -108,15 +124,15 @@ ALTER TABLE `membre`
 -- Contraintes pour la table `objet`
 --
 ALTER TABLE `objet`
-  ADD CONSTRAINT `objet_ibfk_2` FOREIGN KEY (`idVendeur`) REFERENCES `membre` (`id`),
-  ADD CONSTRAINT `objet_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`id`);
+  ADD CONSTRAINT `objet_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`id`),
+  ADD CONSTRAINT `objet_ibfk_2` FOREIGN KEY (`idVendeur`) REFERENCES `membre` (`id`);
 
 --
 -- Contraintes pour la table `vente`
 --
 ALTER TABLE `vente`
-  ADD CONSTRAINT `vente_ibfk_2` FOREIGN KEY (`idAcheteur`) REFERENCES `membre` (`id`),
-  ADD CONSTRAINT `vente_ibfk_1` FOREIGN KEY (`idObjet`) REFERENCES `objet` (`id`);
+  ADD CONSTRAINT `vente_ibfk_1` FOREIGN KEY (`idObjet`) REFERENCES `objet` (`id`),
+  ADD CONSTRAINT `vente_ibfk_2` FOREIGN KEY (`idAcheteur`) REFERENCES `membre` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

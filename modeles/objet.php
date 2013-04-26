@@ -9,37 +9,39 @@ class objet
         private $prixSeuil;
         private $tempsRestant;
         
-        function getIdObjet ()
+
+        function getIdObjet ()//accesseur dde l'id des objet
+
         {
             return $this->id;
         }
         
-        function getIdCategorie ()
+        function getIdCategorie ()//accesseur de l'id categorie
         {
             return $this->idCategorie;
         }
         
-        function getIdVendeur ()
+        function getIdVendeur ()//accesseur de l'id vendeur
         {
             return $this->idVendeur;
         }
         
-        function getPrix ()
+        function getPrix ()//accesseur des prix 
         {
             return $this->prix;
         }
         
-        function getPrixSeuil ()
+        function getPrixSeuil ()//accesseur des prix seuil
         {
             return $this->prixSeuil;
         }
         
-        function getTempsRestant()
+        function getTempsRestant()//accesseur du temps restant avant la fin de l'enchere
         {
             return $this->tempsRestant;
         }
         
-        function lireInfosMembre($id) 
+        function lireInfosMembre($id) //fonction qui renvoie les info de l'objet dont l'id est passé en parametre
         {
             $pdo = PDO2::getInstance();
 
@@ -63,7 +65,7 @@ class objet
             }   
         }
         
-        function ajouterObjet($id, $idCategorie, $idVendeur, $prix, $prixSeuil, $tempsRestant) 
+        function ajouterObjet($id, $idCategorie, $idVendeur, $prix, $prixSeuil, $tempsRestant) //fonction permettant l'ajout d'un objet dans la bdd
         {
 
             $pdo = PDO2::getInstance();
@@ -97,7 +99,7 @@ class objet
         }
         }
         
-        function modifierObjet($id, $idCategorie, $idVendeur, $prix, $prixSeuil, $tempsRestant)
+        function modifierObjet($id, $idCategorie, $idVendeur, $prix, $prixSeuil, $tempsRestant)//fonction permettant la modification des caractéristiques de l'objet
         {
             $pdo = PDO2::getInstance();
 
@@ -126,7 +128,7 @@ class objet
             }   
         }
         
-        function supprimerObjet($id)
+        function supprimerObjet($id)//fonction permettant la suppression d'un objet
         {
             $pdo = PDO2::getInstance();
 
