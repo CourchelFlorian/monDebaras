@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 26 Avril 2013 à 09:34
+-- Généré le: Sam 27 Avril 2013 à 08:00
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.4.3
 
@@ -31,6 +31,13 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `libelle` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `libelle`) VALUES
+(1, 'voiture');
 
 -- --------------------------------------------------------
 
@@ -74,6 +81,13 @@ CREATE TABLE IF NOT EXISTS `objet` (
   KEY `idVendeur` (`idVendeur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `objet`
+--
+
+INSERT INTO `objet` (`id`, `idCategorie`, `idVendeur`, `prix`, `prixSeuil`, `tempsRestant`) VALUES
+(1, 1, 2, 1000, 1500, '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -109,6 +123,13 @@ CREATE TABLE IF NOT EXISTS `vente` (
   KEY `idObjet` (`idObjet`),
   KEY `idAcheteur` (`idAcheteur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `vente`
+--
+
+INSERT INTO `vente` (`id`, `idObjet`, `idAcheteur`, `prix`) VALUES
+(1, 1, 1, 1600);
 
 --
 -- Contraintes pour les tables exportées
